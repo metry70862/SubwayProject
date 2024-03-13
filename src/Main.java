@@ -31,7 +31,7 @@ public class Main {
             stationInfos.add(stationInfo);
         }
         for(StationInfo s: stationInfos){
-            System.out.println(s);
+            //System.out.println(s);
         }
     }
 

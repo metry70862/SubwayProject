@@ -1,0 +1,5 @@
+
+GET http://swopenapi.seoul.go.kr/api/subway/5167474e4d646f6d35327376574c58/xml/realtimePosition/1/5/1%ED%98%B8%EC%84%A0
+Accept: application/xml
+
+###

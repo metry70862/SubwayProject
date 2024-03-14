@@ -3,7 +3,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        makeCsvToList();
+        //makeCsvToList();
         RealtimeSubwayInfo realtimeSubwayInfo = new RealtimeSubwayInfo("신이문");
         realtimeSubwayInfo.get();
     }

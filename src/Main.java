@@ -4,7 +4,8 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         makeCsvToList();
-        RealtimeSubwayInfo realtimeSubwayInfo = new RealtimeSubwayInfo("서울");
+        RealtimeSubwayInfo realtimeSubwayInfo = new RealtimeSubwayInfo("신이문");
+        realtimeSubwayInfo.get();
     }
 
     private static void makeCsvToList() {

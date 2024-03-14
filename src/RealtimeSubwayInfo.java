@@ -22,7 +22,7 @@ public class RealtimeSubwayInfo {
         this.station_Name = station_Name;
     }
 
-    private void get() {
+    public void get() {
         try {
             String station = URLEncoder.encode(this.station_Name, StandardCharsets.UTF_8);
             // URL 설정

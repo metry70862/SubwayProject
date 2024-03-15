@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class RealtimeSubwayInfo {
     private String station_Name;
-    private ArrayList<Subway> subwayArrayList;
+    private ArrayList<Subway> subwayArrayList; //도착정보 받은 json 데이터를 Subway 객체로 저장
 
     public RealtimeSubwayInfo(String station_Name) {
         this.station_Name = station_Name;
@@ -49,7 +49,7 @@ public class RealtimeSubwayInfo {
             e.printStackTrace();
         }
     }
-    private ArrayList<Subway> makeSubwayList(JSONObject jsonObject){
+    private ArrayList<Subway> makeSubwayList(JSONObject jsonObject){ //어레이리스트에 Subway 저장 및 리턴
         JSONArray realtimeArrivalList = jsonObject.getJSONArray("realtimeArrivalList");
         ArrayList<Subway> subwayArrayList = new ArrayList<>();
         for (int i = 0; i < realtimeArrivalList.length(); i++) {
@@ -74,6 +74,6 @@ public class RealtimeSubwayInfo {
 
     public ArrayList<Subway> getSubwayArrayList() {
         get();
-        return subwayArrayList;
+        return subwayArrayList; //subwayArrayList getter
     }
 }

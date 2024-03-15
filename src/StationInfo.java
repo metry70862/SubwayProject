@@ -1,3 +1,11 @@
+/*
+StationInfo 는 역 정보를 저장하기 위해 만든 객체임
+subwayID = 몇호선 역인지
+stationID = api에서 받아오는 역 코드
+String stationName = 역 이름
+String LineName = 몇호선인지
+ */
+
 public class StationInfo {
     private int Subway_Id;
     private int Station_Id;

@@ -8,19 +8,21 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 
 public class RealtimeSubwayInfo {
     private String station_Name;
+    private ArrayList<Subway> subwayArrayList;
 
     public RealtimeSubwayInfo(String station_Name) {
         this.station_Name = station_Name;
     }
 
-    public void get() {
+    private void get() {
         try {
             String station = URLEncoder.encode(this.station_Name, StandardCharsets.UTF_8);
             // URL 설정
-            String urlString = "http://swopenAPI.seoul.go.kr/api/subway/5167474e4d646f6d35327376574c58/json/realtimeStationArrival/0/1/"+station;
+            String urlString = "http://swopenAPI.seoul.go.kr/api/subway/5167474e4d646f6d35327376574c58/json/realtimeStationArrival/0/20/"+station;
             URL url = new URL(urlString);
 
             // HTTP 연결 설정
@@ -38,7 +40,7 @@ public class RealtimeSubwayInfo {
                     response.append(inputLine);
                 }
                 in.close();
-                parseJsonData(new JSONObject(response.toString()));
+                subwayArrayList = makeSubwayList(new JSONObject(response.toString()));
 
             } else {
                 System.out.println("HTTP GET request failed: " + responseCode);
@@ -47,14 +49,31 @@ public class RealtimeSubwayInfo {
             e.printStackTrace();
         }
     }
-    private static void parseJsonData(JSONObject jsonObject){
+    private ArrayList<Subway> makeSubwayList(JSONObject jsonObject){
         JSONArray realtimeArrivalList = jsonObject.getJSONArray("realtimeArrivalList");
+        ArrayList<Subway> subwayArrayList = new ArrayList<>();
         for (int i = 0; i < realtimeArrivalList.length(); i++) {
             JSONObject arrivalInfo = realtimeArrivalList.getJSONObject(i);
-            String subwayId = arrivalInfo.getString("subwayId");
+            int subwayId = Integer.parseInt(arrivalInfo.getString("subwayId"));
             String updownline = arrivalInfo.getString("updnLine");
-            System.out.println("SubwayId:"+subwayId);
-            System.out.println("Updownline:"+updownline);
+            int stationFromId = arrivalInfo.getInt("statnFid");
+            int stationToId = arrivalInfo.getInt("statnTid");
+            int stationNum = arrivalInfo.getInt("statnId");
+            String orderKey = arrivalInfo.getString("ordkey");
+            String  subwayType = arrivalInfo.getString("btrainSttus");
+            int subwayETA = arrivalInfo.getInt("barvlDt");
+            int trainNum = arrivalInfo.getInt("btrainNo");
+            String arrivalMsg = arrivalInfo.getString("arvlMsg2");
+            int arrivalCode = arrivalInfo.getInt("arvlCd");
+            Subway subway = new Subway(subwayId,updownline,stationFromId,stationToId,stationNum,orderKey,subwayType,subwayETA,trainNum,arrivalMsg,arrivalCode);
+            subwayArrayList.add(subway);
         }
+
+        return subwayArrayList;
+    }
+
+    public ArrayList<Subway> getSubwayArrayList() {
+        get();
+        return subwayArrayList;
     }
 }

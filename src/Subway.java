@@ -25,11 +25,11 @@ public class Subway {
     private String orderKey;
     private String subwayType;
     private int subwayETA;
-    private int trainNum;
+    private String trainNum;
     private String arrivalMsg;
     private int arrivalCode;
 
-    public Subway(int subwayID, String updownLine,String trainLineNum, int stationFromId, int stationToId, int stationNum, String orderKey, String subwayType, int subwayETA, int trainNum, String arrivalMsg, int arrivalCode) {
+    public Subway(int subwayID, String updownLine,String trainLineNum, int stationFromId, int stationToId, int stationNum, String orderKey, String subwayType, int subwayETA, String trainNum, String arrivalMsg, int arrivalCode) {
         this.subwayID = subwayID;
         this.updownLine = updownLine;
         this.trainLineNum = trainLineNum;

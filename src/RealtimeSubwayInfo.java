@@ -63,7 +63,7 @@ public class RealtimeSubwayInfo {
             String orderKey = arrivalInfo.getString("ordkey");
             String  subwayType = arrivalInfo.getString("btrainSttus");
             int subwayETA = arrivalInfo.getInt("barvlDt");
-            int trainNum = arrivalInfo.getInt("btrainNo");
+            String trainNum = arrivalInfo.getString("btrainNo");
             String arrivalMsg = arrivalInfo.getString("arvlMsg2");
             int arrivalCode = arrivalInfo.getInt("arvlCd");
             Subway subway = new Subway(subwayId,updownline,trainLineNm,stationFromId,stationToId,stationNum,orderKey,subwayType,subwayETA,trainNum,arrivalMsg,arrivalCode);

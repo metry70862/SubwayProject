@@ -40,14 +40,18 @@ public class Subway {
         this.arrivalCode = arrivalCode;
     }
 
+    private String IdtoString(int stationCode){
+        StationInfo stationInfo = StationInfo.findStation(stationCode);
+        return stationInfo.getStation_Name();
+    }
     @Override
     public String toString() {
         return "Subway{" +
                 "subwayID=" + subwayID +
                 ", updownLine='" + updownLine + '\'' +
-                ", stationFromId=" + stationFromId +
-                ", stationToId=" + stationToId +
-                ", stationNum=" + stationNum +
+                ", stationFromId=" + IdtoString(stationFromId) +
+                ", stationToId=" + IdtoString(stationToId) +
+                ", stationNum=" + IdtoString(stationNum) +
                 ", orderKey='" + orderKey + '\'' +
                 ", subwayType='" + subwayType + '\'' +
                 ", subwayETA=" + subwayETA +

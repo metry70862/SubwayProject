@@ -2,6 +2,8 @@
 Subway 는 각 지하철 정보를 저장하기 위해 만든 객체임
 subwayID = 몇호선 전철인지
 updownLine = 상하행
+trainLineNm = 도착지방면
+(성수행(목적지역) - 구로디지털단지방면(다음역))
 stationFromId = 어떤 역에서 오는지
 stationToId = 어떤 역으로 향하는지
 stationNum = 어떤 역에 있는지
@@ -16,6 +18,7 @@ arrivalCode = 도착코드 (0:진입, 1:도착, 2:출발, 3:전역출발, 4:전�
 public class Subway {
     private int subwayID;
     private String updownLine;
+    private String trainLineNum;
     private int stationFromId;
     private int stationToId;
     private int stationNum;
@@ -26,9 +29,10 @@ public class Subway {
     private String arrivalMsg;
     private int arrivalCode;
 
-    public Subway(int subwayID, String updownLine, int stationFromId, int stationToId, int stationNum, String orderKey, String subwayType, int subwayETA, int trainNum, String arrivalMsg, int arrivalCode) {
+    public Subway(int subwayID, String updownLine,String trainLineNum, int stationFromId, int stationToId, int stationNum, String orderKey, String subwayType, int subwayETA, int trainNum, String arrivalMsg, int arrivalCode) {
         this.subwayID = subwayID;
         this.updownLine = updownLine;
+        this.trainLineNum = trainLineNum;
         this.stationFromId = stationFromId;
         this.stationToId = stationToId;
         this.stationNum = stationNum;
@@ -49,6 +53,7 @@ public class Subway {
         return "Subway{" +
                 "subwayID=" + subwayID +
                 ", updownLine='" + updownLine + '\'' +
+                ", trainLineNum'" + trainLineNum + '\'' +
                 ", stationFromId=" + IdtoString(stationFromId) +
                 ", stationToId=" + IdtoString(stationToId) +
                 ", stationNum=" + IdtoString(stationNum) +

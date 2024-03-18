@@ -56,6 +56,7 @@ public class RealtimeSubwayInfo {
             JSONObject arrivalInfo = realtimeArrivalList.getJSONObject(i);
             int subwayId = Integer.parseInt(arrivalInfo.getString("subwayId"));
             String updownline = arrivalInfo.getString("updnLine");
+            String trainLineNm = arrivalInfo.getString("trainLineNm");
             int stationFromId = arrivalInfo.getInt("statnFid");
             int stationToId = arrivalInfo.getInt("statnTid");
             int stationNum = arrivalInfo.getInt("statnId");
@@ -65,7 +66,7 @@ public class RealtimeSubwayInfo {
             int trainNum = arrivalInfo.getInt("btrainNo");
             String arrivalMsg = arrivalInfo.getString("arvlMsg2");
             int arrivalCode = arrivalInfo.getInt("arvlCd");
-            Subway subway = new Subway(subwayId,updownline,stationFromId,stationToId,stationNum,orderKey,subwayType,subwayETA,trainNum,arrivalMsg,arrivalCode);
+            Subway subway = new Subway(subwayId,updownline,trainLineNm,stationFromId,stationToId,stationNum,orderKey,subwayType,subwayETA,trainNum,arrivalMsg,arrivalCode);
             subwayArrayList.add(subway);
         }
 

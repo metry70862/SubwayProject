@@ -7,6 +7,7 @@ String LineName = 몇호선인지
 station 정보를 담는 ArrayList를 멤버 변수로 가지고 있음
 findStation 메소드를 이용하여 역 아이디를 받으면 Station 객체로 반환
 역 아이디가 없을 경우 null반환
+부역명 있는 경우 역명만 검색해도 부역명 포함으로 변환
  */
 
 import java.util.ArrayList;
@@ -56,5 +57,13 @@ public class StationInfo {
 
     public String getStation_Name() {
         return Station_Name;
+    }
+    public static String getStationFullName(String stationName) {
+        for (StationInfo stationInfo : stationInfos) {
+            if (stationInfo.Station_Name.contains(stationName)) {
+                return stationInfo.Station_Name;
+            }
+        }
+        return stationName;
     }
 }

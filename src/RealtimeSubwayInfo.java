@@ -15,7 +15,7 @@ public class RealtimeSubwayInfo {
     private ArrayList<Subway> subwayArrayList; //도착정보 받은 json 데이터를 Subway 객체로 저장
 
     public RealtimeSubwayInfo(String station_Name) {
-        this.station_Name = station_Name;
+        this.station_Name = StationInfo.getStationFullName(station_Name);
     }
 
     private void get() {
